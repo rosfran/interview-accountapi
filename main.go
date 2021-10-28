@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"github.com/rosfran/interview-accountapi/models"
 )
 
 type Response struct {
