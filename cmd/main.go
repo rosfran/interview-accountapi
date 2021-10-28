@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"github.com/rosfran/interview-accountapi/models"	
 )
 
 type Response struct {
@@ -31,7 +32,7 @@ func main() {
 	if err != nil {
 		fmt.Print(err.Error())
 	}
-	var responseObject AccountData
+	var responseObject models.AccountData
 	json.Unmarshal(bodyBytes, &responseObject)
 	fmt.Printf("API Response as struct %+v\n", responseObject)
 }
