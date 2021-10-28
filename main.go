@@ -16,7 +16,7 @@ type Response struct {
 func main() {
 	fmt.Println("Sending requests to Form3 API /accounts endpoint...")
 	client := &http.Client{}
-	req, err := http.NewRequest("GET", "https://localhost:8080/", nil)
+	req, err := http.NewRequest("GET", "http://localhost:8080/", nil)
 	if err != nil {
 		fmt.Print(err.Error())
 	}
