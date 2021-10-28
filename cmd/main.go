@@ -5,14 +5,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"github.com/rosfran/interview-accountapi/models"	
-)
 
-type Response struct {
-	ID     string `json:"id"`
-	Joke   string `json:"joke"`
-	Status int    `json:"status"`
-}
+	"github.com/rosfran/interview-accountapi/models"
+)
 
 func main() {
 	fmt.Println("Sending requests to Form3 API /accounts endpoint...")
