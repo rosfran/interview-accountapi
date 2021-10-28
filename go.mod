@@ -1,3 +1,3 @@
-module "github.com/rosfran/interview-accountapi"
+module github.com/rosfran/interview-accountapi
 
-go 1.15
+go 1.17
