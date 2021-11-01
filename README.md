@@ -1,3 +1,31 @@
+# First project on golang
+
+I'm Rosfran Borges, and this is the first time I develop something on golang. It is a great language, with a 
+strong enviroment and lots of libraries, which I only saw when developing in Python.
+
+Firstly, it was tough to know and adapt my way of doing encapsulation using Go. But it was not anything 
+related with some language construct, but the way the Golang ecosystem allows modules and packages to
+coordinate. For this it is essential to work with a great IDE (Integrated Development Enviroment), because
+this can solve a lot of problems with the naming of functions, variables and methods and their related
+scope inside the packages. After some struggle, it was easier to see where everything has to be. 
+I used VSCode and the Go Extension (https://marketplace.visualstudio.com/items?itemName=golang.go)
+and it was wonderful.
+
+Tha language itself is strong and well designed. It remembers me the C language - in fact, there are a lot of direct
+references like the fmt.Sprintf, strconv.Itoa, etc. Reading the main reference, which is the book "The Go Programming 
+Language", written by Kernighan and Donovan (https://www.amazon.com/Programming-Language-Addison-Wesley-Professional-Computing-dp-0134190440/dp/0134190440/ref=mt_other?_encoding=UTF8&me=&qid=1635718532), is a great experience. All the source codes are meaningful and representative.
+
+GoLang brought back pointers, and came with JSON structures and slices of arrays and strings. It is one great way to represent JSON data as
+a struct, and it is easy to marshall e unmarshall JSON data. But Go has no function named parameters (keywords), just like Python 
+and Scala, and it has a different way to declares methods, showing a form of representation that uses an old OOP concept, which 
+conceptualizes a class as a method receiver. Not so intuitive, and could bring some readability problems, because the methods 
+aren't inside a class scope (like the classes and methods declaration in Java, Scala, C++, etc.).
+
+Yet, Go has a great concurrency model, inspired on CSP (Communicating Sequential Processes), using goroutines and channels.
+Used Actors in Scala, that put Go in a similar position, working on a messaging passing model.
+
+After writing some code and get the main ideas, it was easy to get it and put everything working.
+
 # Form3 Take Home Exercise
 
 Engineers at Form3 build highly available distributed systems in a microservices environment. Our take home test is designed to evaluate real world activities that are involved with this role. We recognise that this may not be as mentally challenging and may take longer to implement than some algorithmic tests that are often seen in interview exercises. Our approach however helps ensure that you will be working with a team of engineers with the necessary practical skills for the role (as well as a diverse range of technical wizardry). 

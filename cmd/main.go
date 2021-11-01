@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/rosfran/interview-accountapi/models"
+	"github.com/rosfran/interview-accountapi/account"
 )
 
 func main() {
@@ -17,7 +17,7 @@ func main() {
 		fmt.Print(err.Error())
 	}
 	req.Header.Add("Accept", "application/vnd.api+json")
-	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("Content-Type", "application/vnd.api+json")
 	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Print(err.Error())
@@ -27,7 +27,7 @@ func main() {
 	if err != nil {
 		fmt.Print(err.Error())
 	}
-	var responseObject models.AccountData
+	var responseObject account.Account
 	json.Unmarshal(bodyBytes, &responseObject)
 	fmt.Printf("API Response as struct %+v\n", responseObject)
 }

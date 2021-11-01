@@ -1,17 +1,25 @@
-package models
+package account
+
+type Account struct {
+	Data AccountDataField `json:"data"`
+}
+
+type AccountArray struct {
+	Data []AccountDataField `json:"data"`
+}
 
 // Account represents an account in the form3 org section.
 // See https://api-docs.form3.tech/api.html#organisation-accounts for
 // more information about fields.
-type AccountData struct {
-	Attributes     *AccountAttributes `json:"attributes,omitempty"`
-	ID             string             `json:"id,omitempty"`
-	OrganisationID string             `json:"organisation_id,omitempty"`
-	Type           string             `json:"type,omitempty"`
-	Version        *int64             `json:"version,omitempty"`
+type AccountDataField struct {
+	Attributes     *AccountAttributesField `json:"attributes,omitempty"`
+	ID             string                  `json:"id,omitempty"`
+	OrganisationID string                  `json:"organisation_id,omitempty"`
+	Type           string                  `json:"type,omitempty"`
+	Version        *int64                  `json:"version,omitempty"`
 }
 
-type AccountAttributes struct {
+type AccountAttributesField struct {
 	AccountClassification   *string  `json:"account_classification,omitempty"`
 	AccountMatchingOptOut   *bool    `json:"account_matching_opt_out,omitempty"`
 	AccountNumber           string   `json:"account_number,omitempty"`
