@@ -26,6 +26,36 @@ Used Actors in Scala, that put Go in a similar position, working on a messaging 
 
 After writing some code and get the main ideas, it was easy to get it and put everything working.
 
+# Program Structure
+
+## account / account_rest.go
+- REST mappings to the endpoints Fetch, Delete and Create
+
+## account / account.go
+- JSON Models for the Account structure
+
+## account / account_test.go
+- Unit tests for the Account operations
+
+## cmd / main.go
+- Sample usage for this library
+
+## http / rest_client.go
+- HTTP REST client with operations GET, POST and DELETE
+
+## http / rest_client_test.go
+- HTTP REST client tests
+
+## test_assertions / assertions.go
+- Simple library with Unit testing routines 
+
+## Dockerfile
+- Creates an image for the Account Testing routine
+
+## run_all_tests.sh
+- Bash script that runs prepares and run 3 containers and run all the tests
+
+
 # Form3 Take Home Exercise
 
 Engineers at Form3 build highly available distributed systems in a microservices environment. Our take home test is designed to evaluate real world activities that are involved with this role. We recognise that this may not be as mentally challenging and may take longer to implement than some algorithmic tests that are often seen in interview exercises. Our approach however helps ensure that you will be working with a team of engineers with the necessary practical skills for the role (as well as a diverse range of technical wizardry). 
