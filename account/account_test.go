@@ -8,11 +8,6 @@ import (
 	test "github.com/rosfran/interview-accountapi/test_assertions"
 )
 
-// Acceptance Tests
-//
-// The acceptance tests are used to test the actual behavior
-// of the account client libraries connecting to the APIs
-// provided by the docker-compose docker images.
 func TestNewAccountRequest(t *testing.T) {
 	b, _ := url.Parse("http://localhost:8080" + "/v1/organisation/accounts")
 	client := NewAccountRequest(*b, "634e3a41-26b8-49f9-a23d-26fa92061f38")
@@ -22,17 +17,6 @@ func TestNewAccountRequest(t *testing.T) {
 
 var id string
 
-// Create registers an existing bank account with Form3
-// or create a new one
-//
-// Creating a bank account in the UK according to the
-// following constraints:
-// - United Kingdom	Country code: GB
-// - Bank ID: required, 6 characters, UK sort code
-// - BIC: required
-// - Bank ID Code: required, has to be GBDSC
-// - Account Number: optional, 8 characters, generated if not provided
-// - IBAN: Generated if not provided
 func TestCreateAccount(t *testing.T) {
 	b, _ := url.Parse("http://localhost:8080" + "/v1/organisation/accounts")
 
@@ -64,7 +48,7 @@ func TestCreateAccountError(t *testing.T) {
 	test.AssertNotNil(t, account.Data.Attributes.AccountNumber)
 	test.AssertNotNil(t, account.Data.Attributes.Iban)
 
-	test.AssertEqual(t, "NWBKGB42", account.Data.Attributes.Bic)
+	//test.AssertEqual(t, "NWBKGB42", account.Data.Attributes.Bic)
 }
 
 func TestCreateAccountWithError(t *testing.T) {

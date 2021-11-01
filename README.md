@@ -1,7 +1,7 @@
 # First project on golang
 
-I'm Rosfran Borges, and this is the first time I develop something on golang. It is a great language, with a 
-strong enviroment and lots of libraries, which I only saw when developing in Python.
+I'm Rosfran Borges, and this is the first time I develop something on GoLang. It is a great language, with a 
+strong enviroment and lots of libraries, from which I only saw when developing in Python.
 
 Firstly, it was tough to know and adapt my way of doing encapsulation using Go. But it was not anything 
 related with some language construct, but the way the Golang ecosystem allows modules and packages to
@@ -27,6 +27,10 @@ Used Actors in Scala, that put Go in a similar position, working on a messaging 
 After writing some code and get the main ideas, it was easy to get it and put everything working.
 
 # Program Structure
+
+## docker-compose.yml
+- It creates 4 services (images/containers): one for an Account API backend, other for a PostgreSQL server, other for
+  an Vault server, another for an account_app service (who runs all the tests)
 
 ## account / account_rest.go
 - REST mappings to the endpoints Fetch, Delete and Create
