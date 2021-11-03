@@ -22,7 +22,7 @@ func TestCreateAccount(t *testing.T) {
 
 	orgid := uuid.NewString()
 
-	client := NewAccountRequest(*b, orgid)
+	client := NewAccountRequest(*b, "634e3a41-26b8-49f9-a23d-26fa92061f38")
 
 	account, _ := client.Create("1stAccount", "GB", "GPB", "400302", "GBDSC", "NWBKGB42", "GB28NWBK40030212764204", orgid)
 
@@ -39,7 +39,7 @@ func TestCreateAccountError(t *testing.T) {
 
 	orgid := uuid.NewString()
 
-	client := NewAccountRequest(*b, orgid)
+	client := NewAccountRequest(*b, "634e3a41-26b8-49f9-a23d-26fa92061f38")
 
 	account, _ := client.Create("1stAccount", "GB", "GPB", "400302", "GBDSC", "", "GB28NWBK40030212764204", orgid)
 
@@ -53,7 +53,7 @@ func TestCreateAccountError(t *testing.T) {
 
 func TestCreateAccountWithError(t *testing.T) {
 	b, _ := url.Parse("http://localhost:8080" + "/v1/organisation/accounts")
-	client := NewAccountRequest(*b, "GB")
+	client := NewAccountRequest(*b, "634e3a41-26b8-49f9-a23d-26fa92061f38")
 
 	_, err := client.Create("2ndAccount", "***", "GPB", "400302", "GBDSC", "NWBKGB42", "GB28NWBK40030212764204", uuid.NewString())
 
@@ -64,12 +64,12 @@ func TestCreateAccountWithError(t *testing.T) {
 func TestFetchAccount(t *testing.T) {
 	b, _ := url.Parse("http://localhost:8080" + "/v1/organisation/accounts")
 
-	orgid := uuid.NewString()
+	//orgid := uuid.NewString()
 
 	if id == "" || len(id) == 0 {
 		id = "d38f9bbc-3180-4cae-9ed8-91dcc2c991ae"
 	}
-	client := NewAccountRequest(*b, orgid)
+	client := NewAccountRequest(*b, "634e3a41-26b8-49f9-a23d-26fa92061f38")
 
 	accountL, _ := client.Fetch(id)
 
