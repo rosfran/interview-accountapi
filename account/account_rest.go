@@ -29,8 +29,9 @@ func NewAccountRequest(baseURL url.URL, organisationID string) *AccountRequest {
 
 func (c *AccountRequest) Create(name, country, baseCurrency, bankID, bankIDCode, bic, iban, orgID string) (a *Account, err error) {
 
+	var names []string = []string{name}
 	attr := &AccountAttributesField{
-		Name:         []string{name},
+		Name:         names,
 		BaseCurrency: baseCurrency,
 		BankID:       bankID,
 		BankIDCode:   bankIDCode,

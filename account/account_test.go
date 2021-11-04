@@ -8,8 +8,10 @@ import (
 	test "github.com/rosfran/interview-accountapi/test_assertions"
 )
 
+var baseURL = "http://accountapi:8080"
+
 func TestNewAccountRequest(t *testing.T) {
-	b, _ := url.Parse("http://localhost:8080" + "/v1/organisation/accounts")
+	b, _ := url.Parse(baseURL + "/v1/organisation/accounts")
 	client := NewAccountRequest(*b, "634e3a41-26b8-49f9-a23d-26fa92061f38")
 
 	test.AssertNotNil(t, client)
@@ -18,7 +20,7 @@ func TestNewAccountRequest(t *testing.T) {
 var id string
 
 func TestCreateAccount(t *testing.T) {
-	b, _ := url.Parse("http://localhost:8080" + "/v1/organisation/accounts")
+	b, _ := url.Parse(baseURL + "/v1/organisation/accounts")
 
 	orgid := uuid.NewString()
 
@@ -35,7 +37,7 @@ func TestCreateAccount(t *testing.T) {
 }
 
 func TestCreateAccountError(t *testing.T) {
-	b, _ := url.Parse("http://localhost:8080" + "/v1/organisation/accounts")
+	b, _ := url.Parse(baseURL + "/v1/organisation/accounts")
 
 	orgid := uuid.NewString()
 
@@ -48,11 +50,10 @@ func TestCreateAccountError(t *testing.T) {
 	test.AssertNotNil(t, account.Data.Attributes.AccountNumber)
 	test.AssertNotNil(t, account.Data.Attributes.Iban)
 
-	//test.AssertEqual(t, "NWBKGB42", account.Data.Attributes.Bic)
 }
 
 func TestCreateAccountWithError(t *testing.T) {
-	b, _ := url.Parse("http://localhost:8080" + "/v1/organisation/accounts")
+	b, _ := url.Parse(baseURL + "/v1/organisation/accounts")
 	client := NewAccountRequest(*b, "634e3a41-26b8-49f9-a23d-26fa92061f38")
 
 	_, err := client.Create("2ndAccount", "***", "GPB", "400302", "GBDSC", "NWBKGB42", "GB28NWBK40030212764204", uuid.NewString())
@@ -62,7 +63,7 @@ func TestCreateAccountWithError(t *testing.T) {
 }
 
 func TestFetchAccount(t *testing.T) {
-	b, _ := url.Parse("http://localhost:8080" + "/v1/organisation/accounts")
+	b, _ := url.Parse(baseURL + "/v1/organisation/accounts")
 
 	//orgid := uuid.NewString()
 
@@ -86,7 +87,7 @@ func TestFetchAccount(t *testing.T) {
 }
 
 func TestDeleteAccount(t *testing.T) {
-	b, _ := url.Parse("http://localhost:8080" + "/v1/organisation/accounts")
+	b, _ := url.Parse(baseURL + "/v1/organisation/accounts")
 
 	orgid := uuid.NewString()
 
@@ -102,7 +103,7 @@ func TestDeleteAccount(t *testing.T) {
 }
 
 func TestDeleteAccountNotFound(t *testing.T) {
-	b, _ := url.Parse("http://localhost:8080" + "/v1/organisation/accounts")
+	b, _ := url.Parse(baseURL + "/v1/organisation/accounts")
 
 	orgid := uuid.NewString()
 
