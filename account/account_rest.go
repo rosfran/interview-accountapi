@@ -27,18 +27,48 @@ func NewAccountRequest(baseURL url.URL, organisationID string) *AccountRequest {
 	}
 }
 
-func (c *AccountRequest) Create(name, country, baseCurrency, bankID, bankIDCode, bic, iban, orgID string) (a *Account, err error) {
+func (c *AccountRequest) Create(name, orgID string, attributes map[string]string) (a *Account, err error) {
 
 	var names []string = []string{name}
 	attr := &AccountAttributesField{
-		Name:         names,
-		BaseCurrency: baseCurrency,
-		BankID:       bankID,
-		BankIDCode:   bankIDCode,
-		Bic:          bic,
-		Iban:         iban,
-		Country:      &country,
+		Name: names,
 	}
+
+	var country, foundCountry = attributes["Country"]
+	if foundCountry {
+		attr.Country = &country
+	}
+
+	var baseCurrency, foundBaseCurrency = attributes["BaseCurrency"]
+	if foundBaseCurrency {
+		attr.BaseCurrency = baseCurrency
+
+	}
+
+	var bankID, foundBankID = attributes["BankID"]
+	if foundBankID {
+		attr.BankID = bankID
+
+	}
+
+	var bankIDCode, foundBankIDCode = attributes["BankIDCode"]
+	if foundBankIDCode {
+		attr.BankIDCode = bankIDCode
+
+	}
+
+	var bic, foundBic = attributes["Bic"]
+	if foundBic {
+		attr.Bic = bic
+
+	}
+
+	var iban, foundIban = attributes["Iban"]
+	if foundIban {
+		attr.Iban = iban
+
+	}
+
 	account := &AccountDataField{
 		Attributes:     attr,
 		OrganisationID: orgID,

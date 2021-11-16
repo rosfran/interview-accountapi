@@ -26,7 +26,15 @@ func TestCreateAccount(t *testing.T) {
 
 	client := NewAccountRequest(*b, "634e3a41-26b8-49f9-a23d-26fa92061f38")
 
-	account, _ := client.Create("1stAccount", "GB", "GPB", "400302", "GBDSC", "NWBKGB42", "GB28NWBK40030212764204", orgid)
+	var attrs = map[string]string{
+		"Country":      "GB",
+		"BaseCurrency": "GPB",
+		"BankID":       "400302",
+		"BankIDCode":   "GBDSC",
+		"Bic":          "NWBKGB42",
+		"Iban":         "GB28NWBK40030212764204",
+	}
+	account, _ := client.Create("1stAccount", orgid, attrs)
 
 	id = account.Data.ID
 	test.AssertNotNil(t, account.Data.Attributes.Country)
@@ -43,7 +51,15 @@ func TestCreateAccountError(t *testing.T) {
 
 	client := NewAccountRequest(*b, "634e3a41-26b8-49f9-a23d-26fa92061f38")
 
-	account, _ := client.Create("1stAccount", "GB", "GPB", "400302", "GBDSC", "", "GB28NWBK40030212764204", orgid)
+	var attrs = map[string]string{
+		"Country":      "GB",
+		"BaseCurrency": "GPB",
+		"BankID":       "400302",
+		"BankIDCode":   "GBDSC",
+		"Bic":          "NWBKGB42",
+		"Iban":         "GB28NWBK40030212764204",
+	}
+	account, _ := client.Create("1stAccount", orgid, attrs)
 
 	id = account.Data.ID
 	test.AssertNotNil(t, account.Data.Attributes.Country)
@@ -56,7 +72,16 @@ func TestCreateAccountWithError(t *testing.T) {
 	b, _ := url.Parse(baseURL + "/v1/organisation/accounts")
 	client := NewAccountRequest(*b, "634e3a41-26b8-49f9-a23d-26fa92061f38")
 
-	_, err := client.Create("2ndAccount", "***", "GPB", "400302", "GBDSC", "NWBKGB42", "GB28NWBK40030212764204", uuid.NewString())
+	var attrs = map[string]string{
+		"Country":      "***",
+		"BaseCurrency": "GPB",
+		"BankID":       "400302",
+		"BankIDCode":   "GBDSC",
+		"Bic":          "NWBKGB42",
+		"Iban":         "GB28NWBK40030212764204",
+	}
+
+	_, err := client.Create("2ndAccount", uuid.NewString(), attrs)
 
 	test.AssertNotNil(t, err)
 
@@ -71,6 +96,19 @@ func TestFetchAccount(t *testing.T) {
 		id = "d38f9bbc-3180-4cae-9ed8-91dcc2c991ae"
 	}
 	client := NewAccountRequest(*b, "634e3a41-26b8-49f9-a23d-26fa92061f38")
+
+	var attrs = map[string]string{
+		"Country":      "GB",
+		"BaseCurrency": "GPB",
+		"BankID":       "400302",
+		"BankIDCode":   "GBDSC",
+		"Bic":          "NWBKGB42",
+		"Iban":         "GB28NWBK40030212764204",
+	}
+
+	_, err := client.Create("2ndAccount", uuid.NewString(), attrs)
+
+	test.AssertNotNil(t, err)
 
 	accountL, _ := client.Fetch(id)
 
@@ -87,6 +125,7 @@ func TestFetchAccount(t *testing.T) {
 }
 
 func TestDeleteAccount(t *testing.T) {
+
 	b, _ := url.Parse(baseURL + "/v1/organisation/accounts")
 
 	orgid := uuid.NewString()
@@ -94,7 +133,21 @@ func TestDeleteAccount(t *testing.T) {
 	if id == "" || len(id) == 0 {
 		id = "d38f9bbc-3180-4cae-9ed8-91dcc2c991ae"
 	}
+
 	client := NewAccountRequest(*b, orgid)
+
+	var attrs = map[string]string{
+		"Country":      "GB",
+		"BaseCurrency": "GPB",
+		"BankID":       "400302",
+		"BankIDCode":   "GBDSC",
+		"Bic":          "NWBKGB42",
+		"Iban":         "GB28NWBK40030212764204",
+	}
+
+	_, err := client.Create("2ndAccount", uuid.NewString(), attrs)
+
+	test.AssertNotNil(t, err)
 
 	account, _ := client.Delete(id)
 
