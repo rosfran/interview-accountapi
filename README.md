@@ -1,6 +1,6 @@
 # First project on golang
 
-I'm Rosfran Borges, and this is the first time I develop something on GoLang. It is a great language, with a 
+This is the first time I develop something on GoLang. It is a great language, with a 
 strong enviroment and lots of libraries, from which I only saw when developing in Python.
 
 Firstly, it was tough to know and adapt my way of doing encapsulation using Go. But it was not anything 
